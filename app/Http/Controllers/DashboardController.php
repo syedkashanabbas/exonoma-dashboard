@@ -17,45 +17,4 @@ public function dashboard()
     ]);
 }
 
- public function myCourses()
-    {
-        return view('dashboard.my-courses'); // My Courses page
-    }
-    public function learningPath()
-{
-    return view('dashboard.learning-path');
-}
-public function assignments()
-{
-    return view('dashboard.assignments');
-}
-
-public function certificates()
-{
-    return view('dashboard.certificates');
-}
-public function resources()
-{
-    return view('dashboard.resources');
-}
-public function performance()
-{
-    return view('dashboard.performance');
-}
-public function announcements()
-{
-    return view('dashboard.announcements');
-}
-public function community()
-{
-    return view('dashboard.community');
-}
-
-public function profile()
-{
-    return view('dashboard.profile');
-}
-
-
-
 }

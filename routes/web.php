@@ -16,17 +16,6 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route::get('/my-courses', [DashboardController::class, 'myCourses'])->name('dashboard.myCourses');
-    Route::get('/learning-path', [DashboardController::class, 'learningPath'])->name('dashboard.learningPath');
-    Route::get('/assignments', [DashboardController::class, 'assignments'])->name('dashboard.assignments');
-    Route::get('/certificates', [DashboardController::class, 'certificates'])->name('dashboard.certificates');
-    Route::get('/resources', [DashboardController::class, 'resources'])->name('dashboard.resources');
-    Route::get('/performance', [DashboardController::class, 'performance'])->name('dashboard.performance');
-    Route::get('/announcements', [DashboardController::class, 'announcements'])->name('dashboard.announcements');
-    Route::get('/community', [DashboardController::class, 'community'])->name('dashboard.community');
-    Route::get('/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
-
-
 
 });
 
