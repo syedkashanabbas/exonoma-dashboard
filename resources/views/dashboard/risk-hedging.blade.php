@@ -1,6 +1,6 @@
 @extends('layouts.layout1')
 
-@section('title', 'Risk & Hedging')
+@section('title', 'Transactions History')
 
 @section('content')
 <style>
@@ -16,6 +16,9 @@
         background: linear-gradient(90deg,#0d6efd,#6610f2);
         -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
+    .stat-card h3 { font-weight: 800; font-size: 1.8rem; }
+    .table thead th { background: linear-gradient(90deg,#f8f9fa,#eef1f8); border: none; font-weight: 600; }
+    .table-hover tbody tr:hover { background: rgba(13,110,253,0.08); transform: scale(1.01); transition:0.2s; }
     .chart-card { position: relative; overflow: hidden; }
     .chart-card::before {
         content: ""; position: absolute; top:-50%; left:-50%; width:200%; height:200%;
@@ -23,7 +26,6 @@
         animation: rotate 12s linear infinite; opacity:0.05;
     }
     @keyframes rotate {100%{transform:rotate(360deg)}}
-    .table-hover tbody tr:hover { background: rgba(13,110,253,0.08); transform: scale(1.01); transition:0.2s; }
 </style>
 
 <div class="py-4 container-fluid">
@@ -31,87 +33,77 @@
     <!-- Header -->
     <div class="mb-4 d-flex justify-content-between align-items-center">
         <div>
-            <h2 class="fw-bold">Risk & Hedging</h2>
-            <p class="text-muted">Exposure, hedges, stop-loss monitoring, and risk metrics</p>
+            <h2 class="fw-bold">Transactions History</h2>
+            <p class="text-muted">Deposits, withdrawals, trades, and plan renewals</p>
         </div>
-        <button class="shadow-sm btn btn-danger"><i class="fas fa-shield-alt me-2"></i> Run Risk Audit</button>
+        <button class="shadow-sm btn btn-primary">
+            <i class="fas fa-download me-2"></i> Export History
+        </button>
     </div>
 
     <!-- Stats -->
     <div class="mb-4 row g-4">
-        <div class="col-md-3"><div class="p-3 card"><h6 class="text-muted">Total Exposure</h6><h3>$1.25M</h3><small class="text-danger">High Risk</small></div></div>
-        <div class="col-md-3"><div class="p-3 card"><h6 class="text-muted">Active Hedges</h6><h3 class="text-success">5</h3><small>protecting positions</small></div></div>
-        <div class="col-md-3"><div class="p-3 card"><h6 class="text-muted">Stop-Loss Orders</h6><h3 class="text-warning">12</h3><small>triggered if breached</small></div></div>
-        <div class="col-md-3"><div class="p-3 card"><h6 class="text-muted">Risk Score</h6><h3 class="text-primary">68/100</h3><small>AI-assessed</small></div></div>
+        <div class="col-md-3"><div class="p-3 card stat-card"><h6 class="text-muted">Total Deposits</h6><h3 class="text-success">$45,200</h3><small>last 30 days</small></div></div>
+        <div class="col-md-3"><div class="p-3 card stat-card"><h6 class="text-muted">Total Withdrawals</h6><h3 class="text-danger">$12,800</h3><small>last 30 days</small></div></div>
+        <div class="col-md-3"><div class="p-3 card stat-card"><h6 class="text-muted">Total Trades</h6><h3 class="text-primary">324</h3><small>executed</small></div></div>
+        <div class="col-md-3"><div class="p-3 card stat-card"><h6 class="text-muted">Plan Renewals</h6><h3 class="text-warning">18</h3><small>this month</small></div></div>
     </div>
 
-    <!-- Exposure Graph + VaR Gauge -->
-    <div class="mb-4 row g-4">
-        <div class="col-lg-8"><div class="card chart-card">
-            <div class="bg-white border-0 card-header"><h6 class="mb-0 fw-bold">Exposure by Asset Class</h6></div>
-            <div class="card-body"><canvas id="exposureBar" height="200"></canvas></div>
-        </div></div>
-        <div class="col-lg-4"><div class="card chart-card">
-            <div class="bg-white border-0 card-header"><h6 class="mb-0 fw-bold">Value at Risk (VaR)</h6></div>
-            <div class="card-body"><canvas id="varGauge" height="200"></canvas></div>
-        </div></div>
-    </div>
-
-    <!-- Stop-Loss Monitor -->
+    <!-- Transactions Table -->
     <div class="mb-4 shadow-sm card">
-        <div class="bg-white border-0 card-header d-flex justify-content-between">
-            <h6 class="mb-0 fw-bold">Stop-Loss Monitor</h6>
-            <button class="btn btn-sm btn-outline-danger">Manage Orders</button>
+        <div class="bg-white border-0 card-header d-flex justify-content-between align-items-center">
+            <h6 class="mb-0 fw-bold">All Transactions</h6>
+            <input type="text" class="form-control form-control-sm w-25" placeholder="Search...">
         </div>
         <div class="card-body">
             <table class="table align-middle table-hover">
-                <thead><tr><th>Asset</th><th>Stop Price</th><th>Current</th><th>Status</th></tr></thead>
+                <thead><tr><th>Date</th><th>Type</th><th>Amount</th><th>Status</th></tr></thead>
                 <tbody>
-                    <tr><td>BTC</td><td>$44,500</td><td>$45,200</td><td><span class="badge bg-success">Safe</span></td></tr>
-                    <tr><td>ETH</td><td>$3,100</td><td>$3,050</td><td><span class="badge bg-danger">Triggered</span></td></tr>
-                    <tr><td>AAPL</td><td>$178</td><td>$182</td><td><span class="badge bg-warning text-dark">Close</span></td></tr>
+                    <tr><td>Sep 5, 2025</td><td><span class="badge bg-success">Deposit</span></td><td>$5,000</td><td><span class="badge bg-success">Completed</span></td></tr>
+                    <tr><td>Sep 3, 2025</td><td><span class="badge bg-primary">Trade</span></td><td>$1,200</td><td><span class="badge bg-primary">Executed</span></td></tr>
+                    <tr><td>Aug 30, 2025</td><td><span class="badge bg-danger">Withdrawal</span></td><td>$800</td><td><span class="badge bg-warning text-dark">Pending</span></td></tr>
+                    <tr><td>Aug 25, 2025</td><td><span class="badge bg-warning">Renewal</span></td><td>$2,500</td><td><span class="badge bg-success">Processed</span></td></tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- Hedging + Drawdown -->
+    <!-- Charts Row -->
     <div class="mb-4 row g-4">
-        <div class="col-lg-6"><div class="card"><div class="bg-white border-0 card-header"><h6 class="mb-0 fw-bold">Active Hedge Positions</h6></div>
-            <div class="card-body">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item d-flex justify-content-between">Put Option on BTC <span class="text-success">+2.5%</span></li>
-                    <li class="list-group-item d-flex justify-content-between">Short S&P Futures <span class="text-danger">-1.2%</span></li>
-                    <li class="list-group-item d-flex justify-content-between">Gold ETF Long <span class="text-success">+0.9%</span></li>
-                </ul>
-            </div>
+        <div class="col-lg-6"><div class="card chart-card">
+            <div class="bg-white border-0 card-header"><h6 class="mb-0 fw-bold">Deposits vs Withdrawals</h6></div>
+            <div class="card-body"><canvas id="depositWithdrawChart" height="200"></canvas></div>
         </div></div>
         <div class="col-lg-6"><div class="card chart-card">
-            <div class="bg-white border-0 card-header"><h6 class="mb-0 fw-bold">Drawdown Trend</h6></div>
-            <div class="card-body"><canvas id="drawdownChart" height="200"></canvas></div>
+            <div class="bg-white border-0 card-header"><h6 class="mb-0 fw-bold">Trade Volume Trend</h6></div>
+            <div class="card-body"><canvas id="tradeChart" height="200"></canvas></div>
         </div></div>
     </div>
 
-    <!-- Correlation + Hedge Effectiveness -->
-    <div class="row g-4">
+    <!-- Extra Widgets -->
+    <div class="mb-4 row g-4">
         <div class="col-lg-6"><div class="card chart-card">
-            <div class="bg-white border-0 card-header"><h6 class="mb-0 fw-bold">Asset Correlation Matrix</h6></div>
-            <div class="card-body"><canvas id="correlationHeatmap" height="200"></canvas></div>
+            <div class="bg-white border-0 card-header"><h6 class="mb-0 fw-bold">Plan Renewals Timeline</h6></div>
+            <div class="card-body"><canvas id="renewalChart" height="200"></canvas></div>
         </div></div>
         <div class="col-lg-6"><div class="card chart-card">
-            <div class="bg-white border-0 card-header"><h6 class="mb-0 fw-bold">Hedge Effectiveness</h6></div>
-            <div class="card-body"><canvas id="hedgeChart" height="200"></canvas></div>
+            <div class="bg-white border-0 card-header"><h6 class="mb-0 fw-bold">Payment Method Distribution</h6></div>
+            <div class="card-body"><canvas id="paymentChart" height="200"></canvas></div>
         </div></div>
     </div>
 
-    <!-- Risk Events Timeline -->
-    <div class="mt-4 card">
-        <div class="bg-white border-0 card-header"><h6 class="mb-0 fw-bold">Recent Risk Events</h6></div>
-        <div class="card-body">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">ETH stop-loss triggered at $3,100 (10 mins ago)</li>
-                <li class="list-group-item">BTC hedge activated (1 hr ago)</li>
-                <li class="list-group-item">Volatility spike in NASDAQ detected (3 hrs ago)</li>
+    <!-- Live Activity Feed -->
+    <div class="mt-4 card chart-card">
+        <div class="bg-white border-0 card-header d-flex justify-content-between align-items-center">
+            <h6 class="mb-0 fw-bold">Live Activity Feed</h6>
+            <span class="text-muted small">Auto-updating</span>
+        </div>
+        <div class="p-0 card-body">
+            <ul id="activityFeed" class="list-group list-group-flush" style="max-height:250px; overflow:auto;">
+                <li class="list-group-item">[09:15] Deposit of <b>$1,200</b> confirmed</li>
+                <li class="list-group-item">[09:10] Trade executed: <b>BTC/ETH</b> worth $4,500</li>
+                <li class="list-group-item">[09:05] Withdrawal of <b>$600</b> requested</li>
+                <li class="list-group-item">[09:00] Plan Renewal: <b>Monthly Growth</b> $2,000</li>
             </ul>
         </div>
     </div>
@@ -121,5 +113,5 @@
 
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="{{ asset('assets/js/risk-hedging.js') }}"></script>
+<script src="{{ asset('assets/js/transactions-history.js') }}"></script>
 @endpush
