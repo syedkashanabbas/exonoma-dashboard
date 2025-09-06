@@ -7,102 +7,45 @@
     <h2 class="fw-bold">Market Dashboard</h2>
     <p class="text-muted">Stocks, crypto, forex & commodities overview</p>
 
-    <!-- Top Row: Crypto -->
+    <!-- Crypto Cards -->
     <div class="mb-4 row g-4">
+        @foreach(['bitcoin'=>'BTC','ethereum'=>'ETH','cardano'=>'ADA'] as $key=>$label)
         <div class="col-md-4">
             <div class="p-3 card">
-                <h6>Bitcoin (BTC)</h6>
-                <h3 class="fw-bold">${{ $crypto['bitcoin']['usd'] ?? 'N/A' }}</h3>
-                <small class="{{ ($crypto['bitcoin']['usd_24h_change'] ?? 0) >= 0 ? 'text-success' : 'text-danger' }}">
-                    {{ round($crypto['bitcoin']['usd_24h_change'] ?? 0,2) }}%
+                <h6>{{ ucfirst($key) }} ({{ $label }})</h6>
+                <h3 class="fw-bold">${{ $crypto[$key]['usd'] ?? 'N/A' }}</h3>
+                <small class="{{ ($crypto[$key]['usd_24h_change'] ?? 0) >= 0 ? 'text-success' : 'text-danger' }}">
+                    {{ round($crypto[$key]['usd_24h_change'] ?? 0,2) }}%
                 </small>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="p-3 card">
-                <h6>Ethereum (ETH)</h6>
-                <h3 class="fw-bold">${{ $crypto['ethereum']['usd'] ?? 'N/A' }}</h3>
-                <small class="{{ ($crypto['ethereum']['usd_24h_change'] ?? 0) >= 0 ? 'text-success' : 'text-danger' }}">
-                    {{ round($crypto['ethereum']['usd_24h_change'] ?? 0,2) }}%
-                </small>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="p-3 card">
-                <h6>Cardano (ADA)</h6>
-                <h3 class="fw-bold">${{ $crypto['cardano']['usd'] ?? 'N/A' }}</h3>
-                <small class="{{ ($crypto['cardano']['usd_24h_change'] ?? 0) >= 0 ? 'text-success' : 'text-danger' }}">
-                    {{ round($crypto['cardano']['usd_24h_change'] ?? 0,2) }}%
-                </small>
-            </div>
-        </div>
+        @endforeach
     </div>
 
     <!-- Stocks -->
     <div class="mb-4 row g-4">
-        <div class="col-md-6">
-            <div class="p-3 card">
-                <h6>Apple (AAPL)</h6>
-                <h3 class="fw-bold">${{ $aapl['Global Quote']['05. price'] ?? 'N/A' }}</h3>
-                <small>Change: {{ $aapl['Global Quote']['09. change'] ?? '0' }}</small>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="p-3 card">
-                <h6>Tesla (TSLA)</h6>
-                <h3 class="fw-bold">${{ $tsla['Global Quote']['05. price'] ?? 'N/A' }}</h3>
-                <small>Change: {{ $tsla['Global Quote']['09. change'] ?? '0' }}</small>
-            </div>
-        </div>
+        <div class="col-md-6"><div class="p-3 card"><h6>Apple (AAPL)</h6><h3 class="fw-bold">${{ $aapl['Global Quote']['05. price'] ?? 'N/A' }}</h3><small>Change: {{ $aapl['Global Quote']['09. change'] ?? '0' }}</small></div></div>
+        <div class="col-md-6"><div class="p-3 card"><h6>Tesla (TSLA)</h6><h3 class="fw-bold">${{ $tsla['Global Quote']['05. price'] ?? 'N/A' }}</h3><small>Change: {{ $tsla['Global Quote']['09. change'] ?? '0' }}</small></div></div>
     </div>
 
     <!-- Forex + Commodities -->
     <div class="mb-4 row g-4">
-        <div class="col-md-3">
-            <div class="p-3 card"><h6>USD/EUR</h6><h3>{{ $forex['usd_eur'] }}</h3></div>
-        </div>
-        <div class="col-md-3">
-            <div class="p-3 card"><h6>USD/JPY</h6><h3>{{ $forex['usd_jpy'] }}</h3></div>
-        </div>
-        <div class="col-md-3">
-            <div class="p-3 card"><h6>Gold (oz)</h6><h3>${{ $commodities['gold'] }}</h3></div>
-        </div>
-        <div class="col-md-3">
-            <div class="p-3 card"><h6>Oil (barrel)</h6><h3>${{ $commodities['oil'] }}</h3></div>
-        </div>
+        <div class="col-md-3"><div class="p-3 card"><h6>USD/EUR</h6><h3>{{ $forex['usd_eur'] }}</h3></div></div>
+        <div class="col-md-3"><div class="p-3 card"><h6>USD/JPY</h6><h3>{{ $forex['usd_jpy'] }}</h3></div></div>
+        <div class="col-md-3"><div class="p-3 card"><h6>Gold (oz)</h6><h3>${{ $commodities['gold'] }}</h3></div></div>
+        <div class="col-md-3"><div class="p-3 card"><h6>Oil (barrel)</h6><h3>${{ $commodities['oil'] }}</h3></div></div>
     </div>
 
     <!-- Charts -->
     <div class="row g-4">
-        <div class="col-lg-6">
-            <div class="p-3 card">
-                <h6 class="fw-bold">Crypto Trend</h6>
-                <canvas id="cryptoTrend"></canvas>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="p-3 card">
-                <h6 class="fw-bold">Stock Comparison</h6>
-                <canvas id="stockBar"></canvas>
-            </div>
-        </div>
+        <div class="col-lg-6"><div class="p-3 card"><h6 class="fw-bold">BTC 7-Day Trend</h6><canvas id="btcChart"></canvas></div></div>
+        <div class="col-lg-6"><div class="p-3 card"><h6 class="fw-bold">ETH 7-Day Trend</h6><canvas id="ethChart"></canvas></div></div>
     </div>
 
     <div class="mt-3 row g-4">
-        <div class="col-lg-6">
-            <div class="p-3 card">
-                <h6 class="fw-bold">Crypto Market Share</h6>
-                <canvas id="cryptoPie"></canvas>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="p-3 card">
-                <h6 class="fw-bold">Forex Volatility</h6>
-                <canvas id="forexArea"></canvas>
-            </div>
-        </div>
+        <div class="col-lg-6"><div class="p-3 card"><h6 class="fw-bold">AAPL Stock (Daily)</h6><canvas id="aaplChart"></canvas></div></div>
+        <div class="col-lg-6"><div class="p-3 card"><h6 class="fw-bold">Crypto Market Share</h6><canvas id="cryptoPie"></canvas></div></div>
     </div>
-
 </div>
 @endsection
 
@@ -110,30 +53,37 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
+    // BTC Chart
+   let btcLabels = {!! json_encode(array_map(
+    fn($d)=>date('M d',$d[0]/1000),
+    $btcHistory['prices'] ?? []
+)) !!};
 
-    // Crypto Trend (dummy data)
-    new Chart(document.getElementById('cryptoTrend'), {
-        type: 'line',
-        data: {
-            labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-            datasets: [
-                { label:'BTC', data:[48000,48200,47800,48500,49000,49200,49500], borderColor:'#f2a900', fill:false },
-                { label:'ETH', data:[3200,3220,3180,3250,3300,3350,3400], borderColor:'#3c3c3d', fill:false }
-            ]
-        }
+let btcPrices = {!! json_encode(array_map(
+    fn($d)=>$d[1],
+    $btcHistory['prices'] ?? []
+)) !!};
+
+    new Chart(document.getElementById('btcChart'), {
+        type:'line',
+        data:{ labels: btcLabels, datasets:[{ label:'BTC/USD', data: btcPrices, borderColor:'#f2a900', fill:true, tension:0.4 }] }
     });
 
-    // Stock Bar
-    new Chart(document.getElementById('stockBar'), {
+    // ETH Chart
+    let ethLabels = {!! json_encode(array_map(fn($d)=>date('M d',$d[0]/1000), $ethHistory['prices'])) !!};
+    let ethPrices = {!! json_encode(array_map(fn($d)=>$d[1], $ethHistory['prices'])) !!};
+    new Chart(document.getElementById('ethChart'), {
+        type:'line',
+        data:{ labels: ethLabels, datasets:[{ label:'ETH/USD', data: ethPrices, borderColor:'#3c3c3d', fill:true, tension:0.4 }] }
+    });
+
+    // AAPL Chart
+    let aaplRaw = {!! json_encode($aaplHistory['Time Series (Daily)'] ?? []) !!};
+    let aaplLabels = Object.keys(aaplRaw).slice(0,7).reverse();
+    let aaplPrices = aaplLabels.map(d => parseFloat(aaplRaw[d]['4. close']));
+    new Chart(document.getElementById('aaplChart'), {
         type:'bar',
-        data:{
-            labels:['AAPL','TSLA'],
-            datasets:[{
-                label:'Price',
-                data:[{{ $aapl['Global Quote']['05. price'] ?? 0 }}, {{ $tsla['Global Quote']['05. price'] ?? 0 }}],
-                backgroundColor:['#0d6efd','#dc3545']
-            }]
-        }
+        data:{ labels: aaplLabels, datasets:[{ label:'AAPL Close', data: aaplPrices, backgroundColor:'#0d6efd' }] }
     });
 
     // Crypto Market Share
@@ -145,18 +95,6 @@ document.addEventListener("DOMContentLoaded", function(){
                 data:[{{ $crypto['bitcoin']['usd'] ?? 0 }}, {{ $crypto['ethereum']['usd'] ?? 0 }}, {{ $crypto['cardano']['usd'] ?? 0 }}],
                 backgroundColor:['#f2a900','#3c3c3d','#0d6efd']
             }]
-        }
-    });
-
-    // Forex Volatility (dummy)
-    new Chart(document.getElementById('forexArea'), {
-        type:'line',
-        data:{
-            labels:['Mon','Tue','Wed','Thu','Fri'],
-            datasets:[
-                {label:'USD/EUR', data:[0.9,0.91,0.915,0.92,0.918], borderColor:'#20c997', backgroundColor:'rgba(32,201,151,0.2)', fill:true},
-                {label:'USD/JPY', data:[146,147,146.5,148,147.5], borderColor:'#ffc107', backgroundColor:'rgba(255,193,7,0.2)', fill:true}
-            ]
         }
     });
 });

@@ -54,39 +54,48 @@ public function multiAccount()
 
 public function marketDashboard()
 {
-    // Crypto (CoinGecko)
+    // Crypto instant stats
     $crypto = Http::withoutVerifying()->get('https://api.coingecko.com/api/v3/simple/price', [
         'ids' => 'bitcoin,ethereum,cardano',
         'vs_currencies' => 'usd',
         'include_24hr_change' => 'true'
     ])->json();
 
-    // Stock (Alpha Vantage - requires key)
+    // Crypto history (BTC & ETH 7d)
+    $btcHistory = Http::withoutVerifying()->get(
+        'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart',
+        ['vs_currency' => 'usd','days' => 7]
+    )->json();
+
+    $ethHistory = Http::withoutVerifying()->get(
+        'https://api.coingecko.com/api/v3/coins/ethereum/market_chart',
+        ['vs_currency' => 'usd','days' => 7]
+    )->json();
+
+    // Stock (AAPL + TSLA stats)
     $aapl = Http::withoutVerifying()->get('https://www.alphavantage.co/query', [
-        'function' => 'GLOBAL_QUOTE',
-        'symbol' => 'AAPL',
-        'apikey' => env('ALPHA_VANTAGE_KEY')
+        'function' => 'GLOBAL_QUOTE','symbol' => 'AAPL','apikey' => env('ALPHA_VANTAGE_KEY')
     ])->json();
 
     $tsla = Http::withoutVerifying()->get('https://www.alphavantage.co/query', [
-        'function' => 'GLOBAL_QUOTE',
-        'symbol' => 'TSLA',
-        'apikey' => env('ALPHA_VANTAGE_KEY')
+        'function' => 'GLOBAL_QUOTE','symbol' => 'TSLA','apikey' => env('ALPHA_VANTAGE_KEY')
     ])->json();
 
-    // Commodities (Gold & Oil from metals-api or placeholder)
-    $commodities = [
-        'gold' => 1925.40,
-        'oil'  => 72.85
-    ];
+    // Stock history (AAPL 7 days)
+    $aaplHistory = Http::withoutVerifying()->get('https://www.alphavantage.co/query', [
+        'function' => 'TIME_SERIES_DAILY','symbol' => 'AAPL','apikey' => env('ALPHA_VANTAGE_KEY')
+    ])->json();
 
-    // Forex placeholder (normally from Alpha Vantage FX endpoint)
-    $forex = [
-        'usd_eur' => 0.91,
-        'usd_jpy' => 147.25
-    ];
+    // Commodities & Forex placeholders (could also be Alpha Vantage)
+    $commodities = ['gold' => 1925.40,'oil'  => 72.85];
+    $forex = ['usd_eur' => 0.91,'usd_jpy' => 147.25];
 
-    return view('dashboard.market-dashboard', compact('crypto','aapl','tsla','commodities','forex'));
+    return view('dashboard.market-dashboard', compact(
+        'crypto','aapl','tsla','commodities','forex','btcHistory','ethHistory','aaplHistory'
+    ));
 }
+
+
+
 
 }
