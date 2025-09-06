@@ -70,12 +70,31 @@ let btcPrices = {!! json_encode(array_map(
     });
 
     // ETH Chart
-    let ethLabels = {!! json_encode(array_map(fn($d)=>date('M d',$d[0]/1000), $ethHistory['prices'])) !!};
-    let ethPrices = {!! json_encode(array_map(fn($d)=>$d[1], $ethHistory['prices'])) !!};
-    new Chart(document.getElementById('ethChart'), {
-        type:'line',
-        data:{ labels: ethLabels, datasets:[{ label:'ETH/USD', data: ethPrices, borderColor:'#3c3c3d', fill:true, tension:0.4 }] }
-    });
+   let ethLabels = {!! json_encode(array_map(
+    fn($d) => date('M d', $d[0]/1000),
+    $ethHistory['prices'] ?? []
+)) !!};
+
+let ethPrices = {!! json_encode(array_map(
+    fn($d) => $d[1],
+    $ethHistory['prices'] ?? []
+)) !!};
+
+new Chart(document.getElementById('ethChart'), {
+    type: 'line',
+    data: {
+        labels: ethLabels,
+        datasets: [{
+            label: 'ETH/USD',
+            data: ethPrices,
+            borderColor: '#3c3c3d',
+            fill: true,
+            tension: 0.4
+        }]
+    }
+});
+
+    
 
     // AAPL Chart
     let aaplRaw = {!! json_encode($aaplHistory['Time Series (Daily)'] ?? []) !!};

@@ -11,93 +11,106 @@
     </section>
 
     <section id="sidebar_body">
-        <ul class="sidebar_list list-unstyled">
+      <ul class="sidebar_list list-unstyled">
 
-            <li class="sidebar_item">
-                <a href="#" class="sidebar_link d-flex align-items-center text-decoration-none">
-                    <span class="sidebar_link_icon"><i class="fas fa-chart-pie"></i></span>
-                    <span class="sidebar_link_text fs_7 fw-medium">Portfolio Overview</span>
-                </a>
-            </li>
+    <li class="sidebar_item">
+        <a href="{{ route('dashboard') }}" 
+           class="sidebar_link {{ request()->routeIs('dashboard') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+            <span class="sidebar_link_icon"><i class="fas fa-chart-pie"></i></span>
+            <span class="sidebar_link_text fs_7 fw-medium">Portfolio Overview</span>
+        </a>
+    </li>
 
-            <li class="sidebar_item">
-                <a href="#" class="sidebar_link d-flex align-items-center text-decoration-none">
-                    <span class="sidebar_link_icon"><i class="fas fa-layer-group"></i></span>
-                    <span class="sidebar_link_text fs_7 fw-medium">Plans Management</span>
-                </a>
-            </li>
+    <li class="sidebar_item">
+        <a href="{{ route('dashboard.plans') }}" 
+           class="sidebar_link {{ request()->routeIs('dashboard.plans') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+            <span class="sidebar_link_icon"><i class="fas fa-layer-group"></i></span>
+            <span class="sidebar_link_text fs_7 fw-medium">Plans Management</span>
+        </a>
+    </li>
 
-            <li class="sidebar_item">
-                <a href="#" class="sidebar_link d-flex align-items-center text-decoration-none">
-                    <span class="sidebar_link_icon"><i class="fas fa-robot"></i></span>
-                    <span class="sidebar_link_text fs_7 fw-medium">AI Signals</span>
-                </a>
-            </li>
+    <li class="sidebar_item">
+        <a href="{{ route('dashboard.ai-signals') }}" 
+           class="sidebar_link {{ request()->routeIs('dashboard.ai-signals') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+            <span class="sidebar_link_icon"><i class="fas fa-robot"></i></span>
+            <span class="sidebar_link_text fs_7 fw-medium">AI Signals</span>
+        </a>
+    </li>
 
-            <li class="sidebar_item">
-                <a href="#" class="sidebar_link d-flex align-items-center text-decoration-none">
-                    <span class="sidebar_link_icon"><i class="fas fa-shield-alt"></i></span>
-                    <span class="sidebar_link_text fs_7 fw-medium">Risk & Hedging</span>
-                </a>
-            </li>
+    <li class="sidebar_item">
+        <a href="{{ route('dashboard.risk-hedging') }}" 
+           class="sidebar_link {{ request()->routeIs('dashboard.risk-hedging') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+            <span class="sidebar_link_icon"><i class="fas fa-shield-alt"></i></span>
+            <span class="sidebar_link_text fs_7 fw-medium">Risk & Hedging</span>
+        </a>
+    </li>
 
-            <li class="sidebar_item">
-                <a href="#" class="sidebar_link d-flex align-items-center text-decoration-none">
-                    <span class="sidebar_link_icon"><i class="fas fa-exchange-alt"></i></span>
-                    <span class="sidebar_link_text fs_7 fw-medium">Transactions History</span>
-                </a>
-            </li>
+    <li class="sidebar_item">
+        <a href="{{ route('dashboard.transactions-history') }}" 
+           class="sidebar_link {{ request()->routeIs('dashboard.transactions-history') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+            <span class="sidebar_link_icon"><i class="fas fa-exchange-alt"></i></span>
+            <span class="sidebar_link_text fs_7 fw-medium">Transactions History</span>
+        </a>
+    </li>
 
-            <li class="sidebar_item">
-                <a href="#" class="sidebar_link d-flex align-items-center text-decoration-none">
-                    <span class="sidebar_link_icon"><i class="fas fa-chart-line"></i></span>
-                    <span class="sidebar_link_text fs_7 fw-medium">Performance Analytics</span>
-                </a>
-            </li>
+    <li class="sidebar_item">
+        <a href="{{ route('dashboard.performance-analytics') }}" 
+           class="sidebar_link {{ request()->routeIs('dashboard.performance-analytics') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+            <span class="sidebar_link_icon"><i class="fas fa-chart-line"></i></span>
+            <span class="sidebar_link_text fs_7 fw-medium">Performance Analytics</span>
+        </a>
+    </li>
 
-            <li class="sidebar_item">
-                <a href="#" class="sidebar_link d-flex align-items-center text-decoration-none">
-                    <span class="sidebar_link_icon"><i class="fas fa-file-alt"></i></span>
-                    <span class="sidebar_link_text fs_7 fw-medium">Reports & Compliance</span>
-                </a>
-            </li>
+    <li class="sidebar_item">
+        <a href="{{ route('dashboard.reports-compliance') }}" 
+           class="sidebar_link {{ request()->routeIs('dashboard.reports-compliance') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+            <span class="sidebar_link_icon"><i class="fas fa-file-alt"></i></span>
+            <span class="sidebar_link_text fs_7 fw-medium">Reports & Compliance</span>
+        </a>
+    </li>
 
-            <li class="sidebar_item">
-                <a href="#" class="sidebar_link d-flex align-items-center text-decoration-none">
-                    <span class="sidebar_link_icon"><i class="fas fa-bell"></i></span>
-                    <span class="sidebar_link_text fs_7 fw-medium">Notifications Center</span>
-                </a>
-            </li>
+    <li class="sidebar_item">
+        <a href="{{ route('dashboard.notifications-center') }}" 
+           class="sidebar_link {{ request()->routeIs('dashboard.notifications-center') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+            <span class="sidebar_link_icon"><i class="fas fa-bell"></i></span>
+            <span class="sidebar_link_text fs_7 fw-medium">Notifications Center</span>
+        </a>
+    </li>
 
-            <li class="sidebar_item">
-                <a href="#" class="sidebar_link d-flex align-items-center text-decoration-none">
-                    <span class="sidebar_link_icon"><i class="fas fa-users-cog"></i></span>
-                    <span class="sidebar_link_text fs_7 fw-medium">Multi-Account Management</span>
-                </a>
-            </li>
+    <li class="sidebar_item">
+        <a href="{{ route('dashboard.multi-account') }}" 
+           class="sidebar_link {{ request()->routeIs('dashboard.multi-account') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+            <span class="sidebar_link_icon"><i class="fas fa-users-cog"></i></span>
+            <span class="sidebar_link_text fs_7 fw-medium">Multi-Account Management</span>
+        </a>
+    </li>
 
-            <li class="sidebar_item">
-                <a href="#" class="sidebar_link d-flex align-items-center text-decoration-none">
-                    <span class="sidebar_link_icon"><i class="fas fa-globe"></i></span>
-                    <span class="sidebar_link_text fs_7 fw-medium">Market Dashboard</span>
-                </a>
-            </li>
+    <li class="sidebar_item">
+        <a href="{{ route('dashboard.market') }}" 
+           class="sidebar_link {{ request()->routeIs('dashboard.market') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+            <span class="sidebar_link_icon"><i class="fas fa-globe"></i></span>
+            <span class="sidebar_link_text fs_7 fw-medium">Market Dashboard</span>
+        </a>
+    </li>
 
-            <li class="sidebar_item">
-                <a href="#" class="sidebar_link d-flex align-items-center text-decoration-none">
-                    <span class="sidebar_link_icon"><i class="fas fa-user-shield"></i></span>
-                    <span class="sidebar_link_text fs_7 fw-medium">User & Security</span>
-                </a>
-            </li>
+    <li class="sidebar_item">
+        <a href="{{ route('dashboard.user-security') }}" 
+           class="sidebar_link {{ request()->routeIs('dashboard.user-security') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+            <span class="sidebar_link_icon"><i class="fas fa-user-shield"></i></span>
+            <span class="sidebar_link_text fs_7 fw-medium">User & Security</span>
+        </a>
+    </li>
 
-            <li class="sidebar_item">
-                <a href="#" class="sidebar_link d-flex align-items-center text-decoration-none">
-                    <span class="sidebar_link_icon"><i class="fas fa-life-ring"></i></span>
-                    <span class="sidebar_link_text fs_7 fw-medium">Support & Help Center</span>
-                </a>
-            </li>
+    <li class="sidebar_item">
+        <a href="{{ route('dashboard.support-help') }}" 
+           class="sidebar_link {{ request()->routeIs('dashboard.support-help') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+            <span class="sidebar_link_icon"><i class="fas fa-life-ring"></i></span>
+            <span class="sidebar_link_text fs_7 fw-medium">Support & Help Center</span>
+        </a>
+    </li>
 
-        </ul>
+</ul>
+
     </section>
 
     <section id="sidebar_footer">
