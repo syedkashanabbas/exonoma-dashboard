@@ -23,6 +23,10 @@ Route::middleware([
      ->name('dashboard.transactions-history');
      Route::get('/performance-analytics', [DashboardController::class, 'performanceAnalytics'])
      ->name('dashboard.performance-analytics');
+     Route::get('/reports-compliance', [DashboardController::class, 'reportsCompliance'])
+     ->name('dashboard.reports-compliance');
+Route::get('/notifications-center', [DashboardController::class, 'notificationsCenter'])
+     ->name('dashboard.notifications-center');
 });
 
 

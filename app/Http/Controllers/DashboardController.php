@@ -38,5 +38,15 @@ public function performanceAnalytics()
 {
     return view('dashboard.performance-analytics');
 }
+public function reportsCompliance()
+{
+    return view('dashboard.reports-compliance');
+}
+public function notificationsCenter()
+{
+    return view('dashboard.notifications-center');
+}
+
+
 
 }
