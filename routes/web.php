@@ -29,6 +29,9 @@ Route::get('/notifications-center', [DashboardController::class, 'notificationsC
      ->name('dashboard.notifications-center');
      Route::get('/multi-account-management', [DashboardController::class, 'multiAccount'])
      ->name('dashboard.multi-account');
+     Route::get('/market-dashboard', [DashboardController::class, 'marketDashboard'])
+     ->name('dashboard.market');
+
 });
 
 
