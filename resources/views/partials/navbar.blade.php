@@ -10,7 +10,7 @@
                     <button class="btn_transparent d-md-none d-inline-flex align-items-center" data-bs-toggle="offcanvas" data-bs-target="#smallSidebar">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24" fill="var(--black)"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
                     </button>
-                    <img src="assets/img/abdul_ahad_logo.png" width="35" height="auto" alt="abdul ahad logo">
+                    <img src="assets/img/logo.png" width="150"  height="auto" alt="abdul ahad logo">
                 </div>
                 <div class="d-md-inline-flex d-none me-auto">
                     <p class="m-0 fw-semibold fs_5">Dashboard</p>

@@ -1,7 +1,7 @@
 <aside id="sidebar" class="border-end">
     <section id="sidebar_header">
         <div class="d-flex align-items-center justify-content-between">
-            <img src="{{ asset('assets/img/abdul_ahad_logo.png') }}" width="35" alt="logo">
+            <img src="{{ asset('assets/img/logo.png') }}" width="150" alt="logo">
             <button class="btn_transparent d-inline-flex align-items-center" id="closeSidebar">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24" fill="white">
                     <path d="M21,15.61L19.59,17L14.58,12L19.59,7L21,8.39L17.44,12L21,15.61M3,6H16V8H3V6M3,13V11H13V13H3M3,18V16H16V18H3Z"/>
