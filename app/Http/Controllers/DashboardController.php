@@ -47,6 +47,10 @@ public function notificationsCenter()
     return view('dashboard.notifications-center');
 }
 
+public function multiAccount()
+{
+    return view('dashboard.multi-account');
+}
 
 
 }

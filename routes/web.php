@@ -27,6 +27,8 @@ Route::middleware([
      ->name('dashboard.reports-compliance');
 Route::get('/notifications-center', [DashboardController::class, 'notificationsCenter'])
      ->name('dashboard.notifications-center');
+     Route::get('/multi-account-management', [DashboardController::class, 'multiAccount'])
+     ->name('dashboard.multi-account');
 });
 
 
