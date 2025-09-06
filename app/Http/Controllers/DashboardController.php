@@ -19,6 +19,11 @@ public function dashboard()
 public function plans()
 {
 
-    return view('plans');
+    return view('dashboard.plans');
 }
+public function aiSignals()
+{
+    return view('dashboard.ai-signals');
+}
+
 }
