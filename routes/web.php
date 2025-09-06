@@ -18,6 +18,9 @@ Route::middleware([
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/plans', [DashboardController::class, 'plans'])->name('dashboard.plans');
     Route::get('/ai-signals', [DashboardController::class, 'aiSignals'])->name('dashboard.ai-signals');
+    Route::get('/risk-hedging', [DashboardController::class, 'riskHedging'])->name('dashboard.risk-hedging');
+    Route::get('/transactions-history', [DashboardController::class, 'transactionsHistory'])
+     ->name('dashboard.transactions-history');
 });
 
 

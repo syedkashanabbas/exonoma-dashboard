@@ -25,5 +25,14 @@ public function aiSignals()
 {
     return view('dashboard.ai-signals');
 }
+public function riskHedging()
+{
+    return view('dashboard.risk-hedging');
+}
+
+public function transactionsHistory()
+{
+    return view('dashboard.transactions-history');
+}
 
 }
