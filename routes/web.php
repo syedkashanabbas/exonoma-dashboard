@@ -21,6 +21,8 @@ Route::middleware([
     Route::get('/risk-hedging', [DashboardController::class, 'riskHedging'])->name('dashboard.risk-hedging');
     Route::get('/transactions-history', [DashboardController::class, 'transactionsHistory'])
      ->name('dashboard.transactions-history');
+     Route::get('/performance-analytics', [DashboardController::class, 'performanceAnalytics'])
+     ->name('dashboard.performance-analytics');
 });
 
 

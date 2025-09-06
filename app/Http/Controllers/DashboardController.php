@@ -34,5 +34,9 @@ public function transactionsHistory()
 {
     return view('dashboard.transactions-history');
 }
+public function performanceAnalytics()
+{
+    return view('dashboard.performance-analytics');
+}
 
 }
