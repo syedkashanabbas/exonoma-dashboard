@@ -31,7 +31,11 @@ Route::get('/notifications-center', [DashboardController::class, 'notificationsC
      ->name('dashboard.multi-account');
      Route::get('/market-dashboard', [DashboardController::class, 'marketDashboard'])
      ->name('dashboard.market');
-     
+     Route::get('/user-security', [DashboardController::class, 'userSecurity'])
+     ->name('dashboard.user-security');
+    Route::get('/support-help', [DashboardController::class, 'supportHelp'])
+        ->name('dashboard.support-help');
+
 
 });
 

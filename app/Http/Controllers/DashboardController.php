@@ -94,6 +94,14 @@ public function marketDashboard()
         'crypto','aapl','tsla','commodities','forex','btcHistory','ethHistory','aaplHistory'
     ));
 }
+public function userSecurity()
+{
+    return view('dashboard.user-security');
+}
+public function supportHelp()
+{
+    return view('dashboard.support-help');
+}
 
 
 
