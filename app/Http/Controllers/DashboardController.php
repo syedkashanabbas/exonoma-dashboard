@@ -16,5 +16,9 @@ public function dashboard()
         'name' => $user->name,
     ]);
 }
+public function plans()
+{
 
+    return view('plans');
+}
 }

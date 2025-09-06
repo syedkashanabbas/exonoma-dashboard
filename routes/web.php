@@ -16,7 +16,8 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-
+    Route::get('/plans', [DashboardController::class, 'plans'])->name('dashboard.plans');
+    Route::get('/ai-signals', [DashboardController::class, 'aiSignals'])->name('dashboard.ai-signals');
 });
 
 

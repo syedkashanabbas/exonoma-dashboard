@@ -25,13 +25,13 @@
 <body>
     <article>
         {{-- Sidebar --}}
-        <div data-aos="fade-right" data-aos-duration="800">
+        <div  >
             @include('partials.sidebar')
         </div>
 
         <section id="wrapper">
             {{-- Navbar --}}
-            <div data-aos="fade-down" data-aos-duration="800">
+            <div  >
                 @include('partials.navbar')
             </div>
 
