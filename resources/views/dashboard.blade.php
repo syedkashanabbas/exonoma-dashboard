@@ -3,7 +3,7 @@
 @section('title', 'Exonoma | My Dashboard')
 
 @section('content')
-<div class="py-5 container-fluid" style="background:#f9fafc; min-height:100vh;">
+<div class="py-4 container-fluid" >
     <!-- Heading -->
     <div class="mb-5">
         <h2 class="fw-bold text-dark">Portfolio Overview</h2>
