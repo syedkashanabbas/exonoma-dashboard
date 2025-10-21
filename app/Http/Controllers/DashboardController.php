@@ -102,6 +102,10 @@ public function supportHelp()
 {
     return view('dashboard.support-help');
 }
+public function mlm()
+{
+    return view('dashboard.mlm');
+}
 
 
 
