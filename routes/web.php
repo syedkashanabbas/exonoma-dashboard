@@ -35,8 +35,8 @@ Route::get('/notifications-center', [DashboardController::class, 'notificationsC
      ->name('dashboard.user-security');
     Route::get('/support-help', [DashboardController::class, 'supportHelp'])
         ->name('dashboard.support-help');
-    Route::get('/mlm', [DashboardController::class, 'mlm'])
-        ->name('dashboard.mlm');
+    // Route::get('/mlm', [DashboardController::class, 'mlm'])
+    //     ->name('dashboard.mlm');
 
 
 });

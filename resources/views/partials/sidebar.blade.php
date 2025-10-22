@@ -28,13 +28,13 @@
             <span class="sidebar_link_text fs_7 fw-medium">Plans Management</span>
         </a>
     </li>
-    <li class="sidebar_item">
+    {{-- <li class="sidebar_item">
     <a href="{{ route('dashboard.mlm') }}" 
        class="sidebar_link {{ request()->routeIs('dashboard.mlm') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
         <span class="sidebar_link_icon"><i class="fas fa-project-diagram"></i></span>
         <span class="sidebar_link_text fs_7 fw-medium">MLM Network Tree</span>
     </a>
-</li>
+    </li> --}}
 
 
     <li class="sidebar_item">
