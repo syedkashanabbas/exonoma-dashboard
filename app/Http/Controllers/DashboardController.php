@@ -107,7 +107,15 @@ public function mlm()
     return view('dashboard.mlm');
 }
 
+public function integrations()
+{
+    return view('dashboard.integrations');
 
+}
+public function shop()
+{
+    return view('dashboard.shop');
 
+}
 
 }
