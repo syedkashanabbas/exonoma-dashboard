@@ -39,6 +39,8 @@ Route::get('/notifications-center', [DashboardController::class, 'notificationsC
         ->name('dashboard.integrations');
     Route::get('/shop', [DashboardController::class, 'shop'])
         ->name('dashboard.shop');
+    Route::get('/community', [DashboardController::class, 'community'])
+        ->name('dashboard.community');
     // Route::get('/mlm', [DashboardController::class, 'mlm'])
     //     ->name('dashboard.mlm');
 

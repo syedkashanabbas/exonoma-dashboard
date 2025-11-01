@@ -117,5 +117,10 @@ public function shop()
     return view('dashboard.shop');
 
 }
+public function community()
+{
+    return view('dashboard.community');
+
+}
 
 }
