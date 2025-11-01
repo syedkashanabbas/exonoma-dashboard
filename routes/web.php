@@ -41,6 +41,10 @@ Route::get('/notifications-center', [DashboardController::class, 'notificationsC
         ->name('dashboard.shop');
     Route::get('/community', [DashboardController::class, 'community'])
         ->name('dashboard.community');
+    Route::get('/connect-meta-trader', [DashboardController::class, 'connectMetaTrader'])
+        ->name('dashboard.connect-meta-trader');
+    Route::get('/commission', [DashboardController::class, 'commission'])
+        ->name('dashboard.commission');
     // Route::get('/mlm', [DashboardController::class, 'mlm'])
     //     ->name('dashboard.mlm');
 

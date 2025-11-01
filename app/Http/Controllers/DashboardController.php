@@ -122,5 +122,14 @@ public function community()
     return view('dashboard.community');
 
 }
+public function connectMetaTrader()
+{
+    return view('dashboard.connect-meta-trader');
 
+}
+public function commission()
+{
+    return view('dashboard.commission');
+
+}
 }

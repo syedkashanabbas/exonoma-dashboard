@@ -19,7 +19,50 @@
             <span class="sidebar_link_icon"><i class="fas fa-chart-pie"></i></span>
             <span class="sidebar_link_text fs_7 fw-medium">Portfolio Overview</span>
         </a>
+
+        
     </li>
+
+         {{-- New Routes --}}
+            <li class="sidebar_item">
+                <a href="{{ route('dashboard.integrations') }}"
+                   class="sidebar_link {{ request()->routeIs('dashboard.integrations') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+                    <span class="sidebar_link_icon"><i class="fas fa-plug"></i></span>
+                    <span class="sidebar_link_text fs_7 fw-medium">Integrations</span>
+                </a>
+            </li>
+
+            <li class="sidebar_item">
+                <a href="{{ route('dashboard.shop') }}"
+                   class="sidebar_link {{ request()->routeIs('dashboard.shop') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+                    <span class="sidebar_link_icon"><i class="fas fa-store"></i></span>
+                    <span class="sidebar_link_text fs_7 fw-medium">Shop</span>
+                </a>
+            </li>
+
+            <li class="sidebar_item">
+                <a href="{{ route('dashboard.community') }}"
+                   class="sidebar_link {{ request()->routeIs('dashboard.community') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+                    <span class="sidebar_link_icon"><i class="fas fa-users"></i></span>
+                    <span class="sidebar_link_text fs_7 fw-medium">Community</span>
+                </a>
+            </li>
+
+            <li class="sidebar_item">
+                <a href="{{ route('dashboard.connect-meta-trader') }}"
+                   class="sidebar_link {{ request()->routeIs('dashboard.connect-meta-trader') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+                    <span class="sidebar_link_icon"><i class="fas fa-link"></i></span>
+                    <span class="sidebar_link_text fs_7 fw-medium">Connect Meta Trader</span>
+                </a>
+            </li>
+
+            <li class="sidebar_item">
+                <a href="{{ route('dashboard.commission') }}"
+                   class="sidebar_link {{ request()->routeIs('dashboard.commission') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
+                    <span class="sidebar_link_icon"><i class="fas fa-coins"></i></span>
+                    <span class="sidebar_link_text fs_7 fw-medium">Commission</span>
+                </a>
+            </li>
 
     <li class="sidebar_item">
         <a href="{{ route('dashboard.plans') }}" 
@@ -28,13 +71,6 @@
             <span class="sidebar_link_text fs_7 fw-medium">Plans Management</span>
         </a>
     </li>
-    {{-- <li class="sidebar_item">
-    <a href="{{ route('dashboard.mlm') }}" 
-       class="sidebar_link {{ request()->routeIs('dashboard.mlm') ? 'active' : '' }} d-flex align-items-center text-decoration-none">
-        <span class="sidebar_link_icon"><i class="fas fa-project-diagram"></i></span>
-        <span class="sidebar_link_text fs_7 fw-medium">MLM Network Tree</span>
-    </a>
-    </li> --}}
 
 
     <li class="sidebar_item">
