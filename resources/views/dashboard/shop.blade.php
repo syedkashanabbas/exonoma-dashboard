@@ -44,12 +44,72 @@
     <div class="row g-3 mb-4">
         @php
             $plans = [
-                ['name'=>'Starter', 'price'=>'$87', 'duration'=>'for 3 Months', 'features'=>['AI Autotrading: 100 USD','AI Copilot: 50 USD','AI Marketplace: 50 per month']],
-                ['name'=>'Basic', 'price'=>'$147', 'duration'=>'for 3 Months', 'features'=>['AI Autotrading: 500 USD','AI Copilot: 150 USD','AI Marketplace: 50 per month']],
-                ['name'=>'Plus', 'price'=>'$297', 'duration'=>'for 3 Months', 'features'=>['AI Autotrading: 1000 USD','AI Copilot: 250 USD','AI Marketplace: 100 per month']],
-                ['name'=>'Pro', 'price'=>'$747', 'duration'=>'for 3 Months', 'features'=>['AI Autotrading: 3000 USD','AI Copilot: 500 USD','AI Marketplace: 200 per month']],
-                ['name'=>'Elite', 'price'=>'$1497', 'duration'=>'for 3 Months', 'features'=>['AI Autotrading: 5000 USD','AI Copilot: 1000 USD','AI Marketplace: 300 per month']],
-                ['name'=>'Enterprise', 'price'=>'$2997', 'duration'=>'for 3 Months', 'features'=>['AI Autotrading: Unlimited USD','AI Copilot: Unlimited USD','AI Marketplace: 400 per month']]
+                [
+                    'name'=>'Starter', 
+                    'price'=>'$49', 
+                    'original_price'=>'$147',
+                    'duration'=>'per month', 
+                    'features'=>[
+                        'Max Trade Value: $2,500',
+                        'AI Computation Fee: 10%',
+                        'Ref AI Fee Shared: 5%'
+                    ]
+                ],
+                [
+                    'name'=>'Basic', 
+                    'price'=>'$79', 
+                    'original_price'=>'$237',
+                    'duration'=>'per month', 
+                    'features'=>[
+                        'Max Trade Value: $5,000',
+                        'AI Computation Fee: 12%',
+                        'Ref AI Fee Shared: 6%'
+                    ]
+                ],
+                [
+                    'name'=>'Plus', 
+                    'price'=>'$99', 
+                    'original_price'=>'$297',
+                    'duration'=>'per month', 
+                    'features'=>[
+                        'Max Trade Value: $10,000',
+                        'AI Computation Fee: 15%',
+                        'Ref AI Fee Shared: 7%'
+                    ]
+                ],
+                [
+                    'name'=>'Pro', 
+                    'price'=>'$249', 
+                    'original_price'=>'$747',
+                    'duration'=>'per month', 
+                    'features'=>[
+                        'Max Trade Value: $25,000',
+                        'AI Computation Fee: 20%',
+                        'Ref AI Fee Shared: 10%'
+                    ]
+                ],
+                [
+                    'name'=>'Elite', 
+                    'price'=>'$499', 
+                    'original_price'=>'$1,497',
+                    'duration'=>'per month', 
+                    'features'=>[
+                        'Max Trade Value: $100,000',
+                        'AI Computation Fee: 25%',
+                        'Ref AI Fee Shared: 12%'
+                    ]
+                ],
+                [
+                    'name'=>'Enterprise', 
+                    'price'=>'$999', 
+                    'original_price'=>'$2,997',
+                    'duration'=>'per month', 
+                    'features'=>[
+                        'Max Trade Value: No Limit',
+                        'AI Computation Fee: 25%',
+                        'Ref AI Fee Shared: 12%'
+                    ]
+                ]
             ];
         @endphp
 
@@ -58,11 +118,14 @@
             <div class="card plan-card h-100 border-0 shadow-sm">
                 <div class="card-body text-center">
                     <h6 class="fw-bold text-uppercase mb-1">{{ $plan['name'] }}</h6>
-                    <h5 class="fw-bold">{{ $plan['price'] }}</h5>
-                    <p class="text-muted small mb-3">{{ $plan['duration'] }}</p>
+                    <h5 class="fw-bold text-primary">{{ $plan['price'] }}</h5>
+                    <p class="text-muted small mb-1">{{ $plan['duration'] }}</p>
+                    <p class="text-decoration-line-through text-muted small mb-3">
+                        {{ $plan['original_price'] }} for 3 months
+                    </p>
                     <hr>
                     <div class="text-start small mb-3">
-                        <p class="fw-semibold mb-1">Key Features Included:</p>
+                        <p class="fw-semibold mb-1">Key Features:</p>
                         <ul class="list-unstyled mb-2">
                             @foreach ($plan['features'] as $f)
                             <li><i class="fas fa-check text-primary me-1"></i>{{ $f }}</li>
@@ -85,7 +148,63 @@
                 <table class="table align-middle text-center small">
                     <thead class="table-light">
                         <tr>
-                            <th>Plan</th>
+                            <th>MEMBERSHIP</th>
+                            <th>Starter $49</th>
+                            <th>Basic $79</th>
+                            <th>Plus $99</th>
+                            <th>Pro $249</th>
+                            <th>Elite $499</th>
+                            <th>Enterprise $999</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PRICE (3 MONTHS)</td>
+                            <td>$147.00</td>
+                            <td>$237.00</td>
+                            <td>$297.00</td>
+                            <td>$747.00</td>
+                            <td>$1,497.00</td>
+                            <td>$2,997.00</td>
+                        </tr>
+                        <tr>
+                            <td>MAX TRADE VALUE</td>
+                            <td>$2,500.00</td>
+                            <td>$5,000.00</td>
+                            <td>$10,000.00</td>
+                            <td>$25,000.00</td>
+                            <td>$100,000.00</td>
+                            <td>NO LIMIT</td>
+                        </tr>
+                        <tr>
+                            <td>AI COMPUTATION FEE</td>
+                            <td>10%</td>
+                            <td>12%</td>
+                            <td>15%</td>
+                            <td>20%</td>
+                            <td>25%</td>
+                            <td>25%</td>
+                        </tr>
+                        <tr>
+                            <td>REF AI FEE SHARED</td>
+                            <td>5%</td>
+                            <td>6%</td>
+                            <td>7%</td>
+                            <td>10%</td>
+                            <td>12%</td>
+                            <td>12%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            {{-- Member Compensation Plan Table --}}
+            <h6 class="fw-semibold mb-3 mt-4">Member Compensation Plan</h6>
+            <div class="table-responsive">
+                <table class="table align-middle text-center small">
+                    <thead class="table-light">
+                        <tr>
+                            <th>LEVEL</th>
                             <th>Starter</th>
                             <th>Basic</th>
                             <th>Plus</th>
@@ -95,12 +214,60 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Price (3 Months)</td><td>$87</td><td>$147</td><td>$297</td><td>$747</td><td>$1,497</td><td>$2,997</td></tr>
-                        <tr><td>AI Autotrading</td><td>100 USD</td><td>500 USD</td><td>1000 USD</td><td>3000 USD</td><td>5000 USD</td><td>Unlimited</td></tr>
-                        <tr><td>AI Copilot</td><td>50 USD</td><td>150 USD</td><td>250 USD</td><td>500 USD</td><td>1000 USD</td><td>Unlimited</td></tr>
-                        <tr><td>Marketplace</td><td>$50/mo</td><td>$50/mo</td><td>$100/mo</td><td>$200/mo</td><td>$300/mo</td><td>$400/mo</td></tr>
-                        <tr><td>Commission Reduction</td><td>10%</td><td>15%</td><td>20%</td><td>25%</td><td>30%</td><td>35%</td></tr>
-                        <tr><td>AI Computation Level</td><td>Level 1</td><td>Level 2</td><td>Level 3</td><td>Level 4</td><td>Level 5</td><td>Level 6</td></tr>
+                        <tr>
+                            <td>1st LEVEL</td>
+                            <td>$22.05</td>
+                            <td>$35.55</td>
+                            <td>$44.55</td>
+                            <td>$112.05</td>
+                            <td>$224.55</td>
+                            <td>$449.55</td>
+                        </tr>
+                        <tr>
+                            <td>2nd LEVEL</td>
+                            <td>$14.70</td>
+                            <td>$23.70</td>
+                            <td>$29.70</td>
+                            <td>$74.70</td>
+                            <td>$149.70</td>
+                            <td>$299.70</td>
+                        </tr>
+                        <tr>
+                            <td>3rd LEVEL</td>
+                            <td>$14.70</td>
+                            <td>$23.70</td>
+                            <td>$29.70</td>
+                            <td>$74.70</td>
+                            <td>$149.70</td>
+                            <td>$299.70</td>
+                        </tr>
+                        <tr>
+                            <td>4th LEVEL</td>
+                            <td>$14.70</td>
+                            <td>$23.70</td>
+                            <td>$29.70</td>
+                            <td>$74.70</td>
+                            <td>$149.70</td>
+                            <td>$299.70</td>
+                        </tr>
+                        <tr>
+                            <td>5th LEVEL</td>
+                            <td>$7.35</td>
+                            <td>$11.85</td>
+                            <td>$14.85</td>
+                            <td>$37.35</td>
+                            <td>$823.35</td>
+                            <td>$149.85</td>
+                        </tr>
+                        <tr class="table-active fw-bold">
+                            <td>TOTAL</td>
+                            <td>$73.50</td>
+                            <td>$118.50</td>
+                            <td>$148.50</td>
+                            <td>$373.50</td>
+                            <td>$1,497.00</td>
+                            <td>$1,498.50</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -138,6 +305,9 @@
 }
 .nav-pills .nav-link.active {
     background: linear-gradient(135deg,#0043a8,#007bff);
+}
+.table-active {
+    background-color: rgba(0, 67, 168, 0.1);
 }
 </style>
 @endpush
