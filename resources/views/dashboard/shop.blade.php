@@ -7,7 +7,7 @@
     <h6 class="fw-bold mb-3">Shop</h6>
 
     {{-- Free Trial Box --}}
-    <div class="card shadow-sm border-0 mb-4 free-trial-card">
+    {{-- <div class="card shadow-sm border-0 mb-4 free-trial-card">
         <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-md-center">
             <div>
                 <h6 class="fw-semibold mb-1">Start Your 30-Day Free Trial with Enaria</h6>
@@ -23,14 +23,14 @@
                 <button class="btn btn-primary btn-sm px-4">Start Free Trial</button>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- Plan Tabs --}}
     <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
         <ul class="nav nav-pills mb-2" id="planTabs">
             <li class="nav-item"><button class="nav-link active">3 Months</button></li>
-            <li class="nav-item"><button class="nav-link">6 Months</button></li>
-            <li class="nav-item"><button class="nav-link">12 Months</button></li>
+            {{-- <li class="nav-item"><button class="nav-link">6 Months</button></li>
+            <li class="nav-item"><button class="nav-link">12 Months</button></li> --}}
         </ul>
         <select class="form-select w-auto">
             <option selected>Expected Trading Balance</option>
