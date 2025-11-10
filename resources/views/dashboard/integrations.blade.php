@@ -32,7 +32,7 @@
                 <h6 class="fw-bold mb-1">Hello, Welcome in your Integration</h6>
                 <p class="small mb-0">View and manage all your connected trading accounts here. Link your trading accounts to a license to unlock more features and start trading with ease.</p>
             </div>
-            <button class="btn btn-outline-light btn-sm">Add New Meta Trader Account</button>
+            <a href="{{ route('dashboard.connect-meta-trader') }}" class="btn btn-outline-light btn-sm">Add New Meta Trader Account</a>
         </div>
     </div>
 
