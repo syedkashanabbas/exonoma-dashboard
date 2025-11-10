@@ -40,22 +40,7 @@
         </div>
     </section>
 
-    <!-- Permissions -->
-    <section class="mb-5">
-        <h2 class="pb-2 mb-3 fw-bold border-bottom">Roles & Permissions</h2>
-        <table class="table align-middle table-borderless fs-5">
-            <thead class="border-bottom">
-                <tr>
-                    <th>Role</th><th>Description</th><th class="text-center">Access</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td><i class="fas fa-user me-2 text-secondary"></i>User</td><td>Basic account features</td><td class="text-center"><span class="badge bg-success fs-6">Active</span></td></tr>
-                <tr><td><i class="fas fa-user-tie me-2 text-info"></i>Advisor</td><td>Manage client portfolios</td><td class="text-center"><span class="badge bg-danger fs-6">Inactive</span></td></tr>
-                <tr><td><i class="fas fa-crown me-2 text-warning"></i>Admin</td><td>Full system control</td><td class="text-center"><span class="badge bg-danger fs-6">Inactive</span></td></tr>
-            </tbody>
-        </table>
-    </section>
+  
 
     <!-- 2FA -->
     <section class="mb-5">
