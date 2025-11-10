@@ -4,7 +4,7 @@
         <!-- Left Side (Register Form) -->
         <div class="flex flex-col justify-center w-full px-12 bg-white shadow-xl lg:px-24 lg:w-1/2">
             <div class="w-full max-w-md mx-auto">
-                <h1 class="mb-6 text-4xl font-bold text-gray-800">Create Student Account</h1>
+                <h1 class="mb-6 text-4xl font-bold text-gray-800">Create An Account</h1>
                 <p class="mb-8 text-gray-500">Join us today and get started with your student profile.</p>
 
                 <x-validation-errors class="mb-4" />
