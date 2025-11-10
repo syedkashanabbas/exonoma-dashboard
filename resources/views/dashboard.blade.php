@@ -5,6 +5,12 @@
 @section('content')
 <div class="py-4 container-fluid" >
     <!-- Heading -->
+    <!-- Coming Soon Overlay -->
+<div class="coming-soon-overlay">
+    <div class="overlay-text">Coming Soon</div>
+</div>
+
+
     <div class="mb-5">
         <h2 class="fw-bold text-dark">Portfolio Overview</h2>
         <p class="text-muted">Track your investments, growth and performance in one place</p>
