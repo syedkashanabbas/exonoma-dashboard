@@ -7,7 +7,7 @@
     <h6 class="fw-bold mb-3">Integration</h6>
 
     {{-- Free Trial Box --}}
-    <div class="card shadow-sm border-0 mb-3 free-trial-card">
+    {{-- <div class="card shadow-sm border-0 mb-3 free-trial-card">
         <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-md-center">
             <div>
                 <h6 class="fw-semibold mb-1">Start Your 30-Day Free Trial with Enaria</h6>
@@ -23,7 +23,7 @@
                 <button class="btn btn-primary btn-sm px-4">Start Free Trial</button>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- Integration Banner --}}
     <div class="card border-0 mb-4 gradient-banner text-white position-relative overflow-hidden">
