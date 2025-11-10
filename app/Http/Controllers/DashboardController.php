@@ -51,49 +51,80 @@ public function multiAccount()
 {
     return view('dashboard.multi-account');
 }
-
 public function marketDashboard()
 {
-    // Crypto instant stats
+    $alphaKey = env('ALPHA_VANTAGE_KEY');
+    $fmpKey = env('FMP_API_KEY');
+
+    // Crypto
     $crypto = Http::withoutVerifying()->get('https://api.coingecko.com/api/v3/simple/price', [
         'ids' => 'bitcoin,ethereum,cardano',
         'vs_currencies' => 'usd',
         'include_24hr_change' => 'true'
     ])->json();
 
-    // Crypto history (BTC & ETH 7d)
-    $btcHistory = Http::withoutVerifying()->get(
-        'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart',
-        ['vs_currency' => 'usd','days' => 7]
-    )->json();
+    // Crypto history
+    $btcHistory = Http::withoutVerifying()->get('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart', [
+        'vs_currency' => 'usd', 'days' => 7
+    ])->json();
 
-    $ethHistory = Http::withoutVerifying()->get(
-        'https://api.coingecko.com/api/v3/coins/ethereum/market_chart',
-        ['vs_currency' => 'usd','days' => 7]
-    )->json();
+    $ethHistory = Http::withoutVerifying()->get('https://api.coingecko.com/api/v3/coins/ethereum/market_chart', [
+        'vs_currency' => 'usd', 'days' => 7
+    ])->json();
 
-    // Stock (AAPL + TSLA stats)
+    // Stocks
     $aapl = Http::withoutVerifying()->get('https://www.alphavantage.co/query', [
-        'function' => 'GLOBAL_QUOTE','symbol' => 'AAPL','apikey' => env('ALPHA_VANTAGE_KEY')
+        'function' => 'GLOBAL_QUOTE', 'symbol' => 'AAPL', 'apikey' => $alphaKey
     ])->json();
 
     $tsla = Http::withoutVerifying()->get('https://www.alphavantage.co/query', [
-        'function' => 'GLOBAL_QUOTE','symbol' => 'TSLA','apikey' => env('ALPHA_VANTAGE_KEY')
+        'function' => 'GLOBAL_QUOTE', 'symbol' => 'TSLA', 'apikey' => $alphaKey
     ])->json();
 
-    // Stock history (AAPL 7 days)
     $aaplHistory = Http::withoutVerifying()->get('https://www.alphavantage.co/query', [
-        'function' => 'TIME_SERIES_DAILY','symbol' => 'AAPL','apikey' => env('ALPHA_VANTAGE_KEY')
+        'function' => 'TIME_SERIES_DAILY', 'symbol' => 'AAPL', 'apikey' => $alphaKey
     ])->json();
 
-    // Commodities & Forex placeholders (could also be Alpha Vantage)
-    $commodities = ['gold' => 1925.40,'oil'  => 72.85];
-    $forex = ['usd_eur' => 0.91,'usd_jpy' => 147.25];
+    // Commodities (FMP stable endpoints)
+    $goldRes = Http::withoutVerifying()->get('https://financialmodelingprep.com/stable/quote', [
+        'symbol' => 'GCUSD',
+        'apikey' => $fmpKey
+    ])->json();
+
+    $oilRes = Http::withoutVerifying()->get('https://financialmodelingprep.com/stable/quote', [
+        'symbol' => 'CLUSD',
+        'apikey' => $fmpKey
+    ])->json();
+
+    $commodities = [
+        'gold' => $goldRes[0]['price'] ?? 'N/A',
+        'oil'  => $oilRes[0]['price'] ?? 'N/A'
+    ];
+
+    // Forex (FMP stable single-quote endpoints)
+    $usdEurRes = Http::withoutVerifying()->get('https://financialmodelingprep.com/stable/quote', [
+        'symbol' => 'USDEUR',
+        'apikey' => $fmpKey
+    ])->json();
+
+    $usdJpyRes = Http::withoutVerifying()->get('https://financialmodelingprep.com/stable/quote', [
+        'symbol' => 'USDJPY',
+        'apikey' => $fmpKey
+    ])->json();
+
+    $forex = [
+        'usd_eur' => $usdEurRes[0]['price'] ?? 'N/A',
+        'usd_jpy' => $usdJpyRes[0]['price'] ?? 'N/A'
+    ];
 
     return view('dashboard.market-dashboard', compact(
         'crypto','aapl','tsla','commodities','forex','btcHistory','ethHistory','aaplHistory'
     ));
 }
+
+
+
+
 public function userSecurity()
 {
     return view('dashboard.user-security');
