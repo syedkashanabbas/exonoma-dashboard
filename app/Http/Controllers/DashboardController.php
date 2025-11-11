@@ -150,9 +150,43 @@ public function shop()
 }
 public function community()
 {
-    return view('dashboard.community');
+    $user = auth()->user();
 
+    // Generate referral code if user doesn't have one
+    if (!$user->referral_code) {
+        $user->referral_code = substr(strtoupper(md5($user->id . time())), 0, 8);
+        $user->save();
+    }
+
+    // Determine correct base URL (local vs production)
+    $baseUrl = config('app.url') ?? url('/');
+    if (app()->environment('local')) {
+        $baseUrl = url('/'); // will be http://127.0.0.1:8000 or local domain
+    }
+
+    // Build referral link
+    $referralLink = "{$baseUrl}/register?ref={$user->referral_code}";
+
+    // Fetch real referrals
+    $referrals = $user->referrals()->get(['email']);
+
+    // Overview stats
+    $totalCommunity = $referrals->count();
+    $firstLine = $totalCommunity; // expandable later if you want multi-level
+    $totalMBR = 0; // placeholder logic for now
+    $totalRevenue = 0; // placeholder logic for now
+
+    return view('dashboard.community', compact(
+        'user',
+        'referrals',
+        'referralLink',
+        'totalCommunity',
+        'firstLine',
+        'totalMBR',
+        'totalRevenue'
+    ));
 }
+
 public function connectMetaTrader()
 {
     return view('dashboard.connect-meta-trader');

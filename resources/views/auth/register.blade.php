@@ -11,6 +11,9 @@
 
                 <form method="POST" action="{{ route('register') }}" class="space-y-5">
                     @csrf
+                    @if(request()->has('ref'))
+                        <input type="hidden" name="ref" value="{{ request()->get('ref') }}">
+                    @endif
 
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
